@@ -11,21 +11,25 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import json
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))
+print(BASE_DIR)
+ROOT_DIR = os.path.dirname(BASE_DIR)
 
+SECRET_SETTING_DIR = os.path.join(ROOT_DIR, '.secret_settings')
+SECRET_SETTING_FILE = os.path.join(SECRET_SETTING_DIR, 'secret_setting.json')
+read_secret_setting = json.loads(
+    open(SECRET_SETTING_FILE, encoding='UTF8').read())
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-dw9)u38(-z)v=4i(6=pkak2w+1z@6a@)kyxvjnl)xid^2m2-m8'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+SECRET_KEY = read_secret_setting["DJANGO"]["secret_key"]
 
 
 # Application definition
@@ -37,6 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'ChatApp',
+
+
 ]
 
 MIDDLEWARE = [
@@ -68,17 +76,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'chatwithU.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 
 # Password validation
