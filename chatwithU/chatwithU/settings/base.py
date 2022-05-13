@@ -17,8 +17,9 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(
     os.path.dirname(os.path.abspath(__file__))))
-print(BASE_DIR)
+print("BASE DIR ROOT", BASE_DIR)
 ROOT_DIR = os.path.dirname(BASE_DIR)
+print("ROOT DIR ROOT", ROOT_DIR)
 
 SECRET_SETTING_DIR = os.path.join(ROOT_DIR, '.secret_settings')
 SECRET_SETTING_FILE = os.path.join(SECRET_SETTING_DIR, 'secret_setting.json')
@@ -102,7 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
@@ -115,6 +116,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
