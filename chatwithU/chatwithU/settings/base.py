@@ -15,6 +15,7 @@ import json
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+print(__file__)
 BASE_DIR = os.path.dirname(os.path.dirname(
     os.path.dirname(os.path.abspath(__file__))))
 print("BASE DIR ROOT", BASE_DIR)
