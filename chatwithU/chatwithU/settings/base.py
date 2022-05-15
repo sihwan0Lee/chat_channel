@@ -15,12 +15,9 @@ import json
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-print(__file__)
 BASE_DIR = os.path.dirname(os.path.dirname(
     os.path.dirname(os.path.abspath(__file__))))
-print("BASE DIR ROOT", BASE_DIR)
 ROOT_DIR = os.path.dirname(BASE_DIR)
-print("ROOT DIR ROOT", ROOT_DIR)
 
 SECRET_SETTING_DIR = os.path.join(ROOT_DIR, '.secret_settings')
 SECRET_SETTING_FILE = os.path.join(SECRET_SETTING_DIR, 'secret_setting.json')
@@ -37,6 +34,7 @@ SECRET_KEY = read_secret_setting["DJANGO"]["secret_key"]
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -88,7 +86,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'chatwithU.wsgi.application'
-
+# Channels
+ASGI_APPLICATION = 'chatwithU.routing.application'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
