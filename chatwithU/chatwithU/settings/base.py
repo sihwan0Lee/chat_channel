@@ -87,7 +87,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'chatwithU.wsgi.application'
 # Channels
-ASGI_APPLICATION = 'chatwithU.routing.application'
+ASGI_APPLICATION = 'chatwithU.asgi.application'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
